@@ -18,47 +18,31 @@ public class SignUpPage {
         this.driver = driver;
     }
 
-    public void enterValidUsername(){
-        driver.findElement(username).sendKeys("fakeuser");
+    public void intoTheUsernameTextbox(String data){
+        driver.findElement(username).sendKeys(data);
     }
 
-    public void enterValidPassword(){
-        driver.findElement(password).sendKeys("123456789");
+    public void intoThePasswordTextbox(String data){
+        driver.findElement(password).sendKeys(data);
     }
 
-    public void enterMatchingConfirmationPassword(){
-        driver.findElement(passwordConfirm).sendKeys("123456789");
+    public void intoTheConfirmationTextbox(String data){
+        driver.findElement(passwordConfirm).sendKeys(data);
     }
 
-    public void clickSignUpButton(){
+    public void clicksSignUpButton(){
         driver.findElement(signUpSubmit).click();
     }
 
-    public void enterUsernameTooShort(){
-        driver.findElement(username).sendKeys("short");
-    }
-
-    public void enterPasswordTooShort(){
-        driver.findElement(password).sendKeys("short");
-    }
-
-    public void enterConfirmationPasswordDoesNotMatch(){
-        driver.findElement(passwordConfirm).sendKeys("nonmatchingpassword");
-    }
-
-    public void verifyErrorMessageUsername(){
+    public void usernameErrorMessage(){
         driver.findElement(usernameError);
     }
 
-    public void verifyErrorMessagePassword(){
+    public void passwordErrorMessage(){
         driver.findElement(passwordError);
     }
 
-    public void verifyErrorMessageConfirmPassword(){
+    public void confirmPasswordErrorMessage(){
         driver.findElement(confirmPasswordError);
-    }
-
-    public void enterTakenUsername(){
-        driver.findElement(username).sendKeys("realname");
     }
 }

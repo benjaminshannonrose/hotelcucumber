@@ -1,5 +1,6 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -7,63 +8,59 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class IndexPage {
 
-    WebDriver driver;
-    By signUpButton = By.id("signUp");
-    By welcome = By.id("welcome");
-    By logOut = By.id("logOut");
-    By logIn = By.id("logIn");
-    By hotelSearchBar = By.id("hotelSearchBar");
-    By findHotel = By.id("findHotel");
-    By book = By.className("book");
-    By viewBookings = By.id("viewBookings");
-    By hopperIcon = By.id("hopperIcon");
-    By hotelName = By.className("hotelName");
+    private WebDriver driver;
+    private By signUpButton = By.id("signUp");
+    private By welcome = By.id("welcome");
+    private By logOut = By.id("logOut");
+    private By logIn = By.id("logIn");
+    private By hotelSearchBar = By.id("hotelSearchBar");
+    private By findHotel = By.id("findHotel");
+    private By book = By.className("book");
+    private By viewBookings = By.id("viewBookings");
+    private By hotelName = By.className("hotelName");
+    private By title = By.tagName("title");
 
     public IndexPage(WebDriver driver){
         this.driver = driver;
     }
 
-    public void verifyLandedOnHomePage(){
-        driver.findElement(hopperIcon);
+    public void landsOn(){
+        String pageTitle = driver.findElement(title).getAttribute("textContent");
+        Assert.assertEquals("Index", pageTitle);
     }
 
-    public void clickSignUp(){
+    public void clicksSignUpLink(){
         driver.findElement(signUpButton).click();
     }
 
-    public String checkSignedIn(){
-        String welcomeText = driver.findElement(welcome).getText();
-        return welcomeText;
+    public void checkSignedIn(){
+        driver.findElement(welcome).getText();
     }
 
-    public void clickLogOut(){
+    public void clicksLogOutLink(){
         driver.findElement(logOut).click();
     }
 
-    public void clickLogIn(){
+    public void clicksLoginLink(){
         driver.findElement(logIn).click();
     }
 
-    public void enterZip(){
-        driver.findElement(hotelSearchBar).sendKeys("43016");
+    public void intoTheHotelSearchBar(String data){
+        driver.findElement(hotelSearchBar).sendKeys(data);
     }
 
-    public void enterCityState(){
-        driver.findElement(hotelSearchBar).sendKeys("Atlanta GA");
-    }
-
-    public void clickSearchButton(){
+    public void clicksSearchButton(){
         driver.findElement(findHotel).click();
     }
 
-    public void clickBookButton(){
+    public void clicksBookHotelButton(){
         WebDriverWait wait = new WebDriverWait(driver, 20);
         driver.findElements(book).get(1).click();
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
     }
 
-    public void clickViewBookings(){
+    public void clicksViewBookingsLink(){
         driver.findElement(viewBookings).click();
     }
 

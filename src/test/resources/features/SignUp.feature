@@ -1,33 +1,34 @@
 Feature: user account creation
 
   Background:
-    Given user is on the home page
-    When user clicks on sign up link
+    Given user 'lands on' the 'index page'
+    When user 'clicks sign up link' on the 'index page'
 
   Scenario: intentional fail to test screenshot capture
     Then scenario should fail
 
-  Scenario: user signs up with valid credentials
-    And user enters new valid username
-    And user enters new valid password
-    And user enters matching confirmation password
-    And user clicks sign up button
-    Then they should land on the log in page
+  Scenario: user signs up with valid username, valid password, and matching confirmation password
+    And user enters 'newvalidusername' 'into the username textbox' on the 'sign up page'
+    And user enters 'newvalidpassword' 'into the password textbox' on the 'sign up page'
+    And user enters 'newvalidpassword' 'into the confirmation textbox' on the 'sign up page'
+    And user 'clicks sign up button' on the 'sign up page'
+    Then user 'lands on' the 'login page'
 
-  Scenario: user signs up with invalid credentials
-    And user enters username that is too short
-    And user enters password that is too short
-    And user enters confirmation password that does not match
-    And user clicks sign up button
-    Then they should get an error message for the username field
-    And they should get an error message for the password field
-    And they should get an error message for the confirm password field
+  Scenario: user signs up with too short of username, too short of password, and unmatching confirmation password
+    And user enters 'short' 'into the username textbox' on the 'sign up page'
+    And user enters 'short' 'into the password textbox' on the 'sign up page'
+    And user enters 'newvalidpassword' 'into the confirmation textbox' on the 'sign up page'
+    And user 'clicks sign up button' on the 'sign up page'
+    Then there should be a 'username error message' on the 'sign up page'
+    And there should be a 'password error message' on the 'sign up page'
+    And there should be a 'confirm password error message' on the 'sign up page'
 
-  Scenario: user signs up with a taken username
-    And user enters taken username
-    And user enters new valid password
-    And user enters matching confirmation password
-    And user clicks sign up button
-    Then they should get an error message for the username field
+  Scenario: user signs up with a taken username, but other credentials are valid
+    And user enters 'realname' 'into the username textbox' on the 'sign up page'
+    And user enters 'newvalidpassword' 'into the password textbox' on the 'sign up page'
+    And user enters 'newvalidpassword' 'into the confirmation textbox' on the 'sign up page'
+    And user 'clicks sign up button' on the 'sign up page'
+    Then there should be a 'username error message' on the 'sign up page'
+
 
 

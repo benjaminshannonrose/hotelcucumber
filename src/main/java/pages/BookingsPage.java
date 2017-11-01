@@ -25,18 +25,13 @@ public class BookingsPage {
         Assert.assertEquals(2, bookingCount);
     }
 
-    public void clickLogOut(){
+    public void clicksLogOutLink(){
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.elementToBeClickable(logOut));
         driver.findElement(logOut).click();
     }
 
-    public void clickViewButton(){
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public void clicksViewBookingButton(){
         driver.findElements(view).get(0).click();
     }
 
@@ -52,7 +47,7 @@ public class BookingsPage {
         wait.until(ExpectedConditions.attributeToBe(By.id("myModal"),"style", "display: none;"));
     }
 
-    public void clickDeleteButtonAndVerifyDelete(){
+    public void clicksDeleteButtonAndVerifiesDeleted(){
         int beforeDelete = driver.findElements(delete).size();
         WebDriverWait wait = new WebDriverWait(driver, 10);
         driver.findElements(delete).get(0).click();

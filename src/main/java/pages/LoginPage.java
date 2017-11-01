@@ -1,9 +1,8 @@
 package pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
 
@@ -12,58 +11,32 @@ public class LoginPage {
     By password = By.id("password");
     By logInSubmit = By.id("logInSubmit");
     By logInError = By.id("logInError");
+    By title = By.tagName("title");
 
     public LoginPage(WebDriver driver){
         this.driver = driver;
     }
 
-    public void enterValidUsername(){
-        driver.findElement(username).sendKeys("realname");
+    public void intoTheUsernameTextbox(String data){
+        driver.findElement(username).sendKeys(data);
     }
 
-    public void enterValidPassword(){
-        driver.findElement(password).sendKeys("123456789");
+    public void intoThePasswordTextbox(String data){
+        driver.findElement(password).sendKeys(data);
     }
 
-    public void clickLoginButton(){
+    public void clicksLoginButton(){
         driver.findElement(logInSubmit).click();
     }
 
-    public void enterInvalidUsername(){
-        driver.findElement(username).sendKeys("badloginname");
+    public void landsOn(){
+
+        String pageTitle = driver.findElement(title).getAttribute("textContent");
+        Assert.assertEquals("Login", pageTitle);
     }
 
-    public void enterInvalidPassword(){
-        driver.findElement(password).sendKeys("badloginpassword");
-    }
-
-    public void verifyRedirectToLoginpage(){
-        WebDriverWait wait = new WebDriverWait(driver, 20);
-        wait.until(ExpectedConditions.elementToBeClickable(logInSubmit));
-        driver.findElement(logInSubmit);
-    }
-
-    public void verifyLoginErrorMessage(){
+    public void errorMessage(){
         driver.findElement(logInError);
     }
 
-    public void enterMapUsername(){
-        driver.findElement(username).sendKeys("mapusername");
-    }
-
-    public void enterMakeBookingUsername(){
-        driver.findElement(username).sendKeys("bookinguser");
-    }
-
-    public void enterDeleteBookingUsername(){
-        driver.findElement(username).sendKeys("deleteuser");
-    }
-
-    public void enterIndexLogOutUsername(){
-        driver.findElement(username).sendKeys("indexlogout");
-    }
-
-    public void enterBookingsLogOutUsername(){
-        driver.findElement(username).sendKeys("bookingslogout");
-    }
 }
