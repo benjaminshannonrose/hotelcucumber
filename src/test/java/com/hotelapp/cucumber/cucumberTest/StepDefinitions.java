@@ -32,7 +32,7 @@ public class StepDefinitions {
 
     @Before
     public void setUp(){
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\bjami\\Desktop\\things\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\bjami\\Desktop\\webdrivers\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://localhost:8080/index");

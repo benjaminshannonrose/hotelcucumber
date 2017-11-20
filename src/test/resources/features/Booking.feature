@@ -53,7 +53,7 @@ Feature: booking hotels
 
   Scenario: user deletes a booking
     When user 'clicks login link' on the 'index page'
-    And user enters 'mapusername' 'into the username textbox' on the 'login page'
+    And user enters 'deleteusergit' 'into the username textbox' on the 'login page'
     And user enters '123456789' 'into the password textbox' on the 'login page'
     And user 'clicks login button' on the 'login page'
     And user 'clicks view bookings link' on the 'index page'
