@@ -36,8 +36,7 @@ Feature: booking hotels
     And user 'clicks login button' on the 'login page'
     And user enters '43016' 'into the hotel search bar' on the 'index page'
     And user 'clicks search button' on the 'index page'
-    And user 'clicks book hotel button' on the 'index page'
-    And user 'clicks book hotel button' on the 'index page'
+    And user 'clicks book hotel button twice' on the 'index page'
     And user 'clicks view bookings link' on the 'index page'
     Then they should see both bookings
 
@@ -53,7 +52,7 @@ Feature: booking hotels
 
   Scenario: user deletes a booking
     When user 'clicks login link' on the 'index page'
-    And user enters 'deleteusergit' 'into the username textbox' on the 'login page'
+    And user enters 'deleteuser' 'into the username textbox' on the 'login page'
     And user enters '123456789' 'into the password textbox' on the 'login page'
     And user 'clicks login button' on the 'login page'
     And user 'clicks view bookings link' on the 'index page'

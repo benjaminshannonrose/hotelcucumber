@@ -55,12 +55,23 @@ public class IndexPage {
 
     public void clicksBookHotelButton(){
         WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(book).get(1)));
         driver.findElements(book).get(1).click();
         wait.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
     }
 
+    public void clicksBookHotelButtonTwice(){
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(book).get(1)));
+        driver.findElements(book).get(1).click();
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElements(book).get(3)));
+        driver.findElements(book).get(3).click();
+    }
+
     public void clicksViewBookingsLink(){
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        wait.until(ExpectedConditions.elementToBeClickable(viewBookings));
         driver.findElement(viewBookings).click();
     }
 

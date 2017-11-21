@@ -49,10 +49,7 @@ public class BookingsPage {
 
     public void clicksDeleteButtonAndVerifiesDeleted(){
         int beforeDelete = driver.findElements(delete).size();
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        driver.findElements(delete).get(0).click();
-        wait.until(ExpectedConditions.alertIsPresent());
-        driver.switchTo().alert().accept();
+        driver.findElements(delete).get(1).click();
         driver.navigate().refresh();
         int afterDelete = driver.findElements(delete).size();
         Assert.assertEquals(beforeDelete-1,afterDelete);
